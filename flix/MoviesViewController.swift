@@ -8,16 +8,36 @@
 
 import UIKit
 
-class MoviesViewController: UIViewController {
-    
+class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    @IBOutlet weak var tableView: UITableView!
+
     private var movies = [[String: Any]]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.dataSource = self
+        tableView.delegate = self
+        
         loadMovies()
     }
 
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return movies.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        
+        let movie = movies[indexPath.row]
+        
+        if let title = movie["title"] as? String {
+            cell.textLabel?.text = title
+        }
+        
+        return cell
+    }
+    
     // MARK: -Private Functions
     private func loadMovies() {
         let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed")!
@@ -33,11 +53,11 @@ class MoviesViewController: UIViewController {
                 self.movies = movies
             }
 
-              // TODO: Reload your table view data
-
+            self.tableView.reloadData()
            }
         }
         task.resume()
     }
+
 }
 
