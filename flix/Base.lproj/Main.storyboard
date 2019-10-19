@@ -70,6 +70,7 @@
                                             <outlet property="posterView" destination="d5m-7T-RRI" id="blf-FD-l4w"/>
                                             <outlet property="synopsisLabel" destination="vBw-qN-8Xc" id="PIR-Fm-Ezc"/>
                                             <outlet property="titleLabel" destination="fgA-fq-5x0" id="MBX-n6-o1q"/>
+                                            <segue destination="Yfl-Mp-Axt" kind="show" id="TP9-Xy-OeX"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -110,6 +111,59 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="epv-4T-WPa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="132" y="138.98050974512745"/>
+        </scene>
+        <!--Movie Details View Controller-->
+        <scene sceneID="56M-o5-wT0">
+            <objects>
+                <viewController id="Yfl-Mp-Axt" customClass="MovieDetailsViewController" customModule="flix" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uhl-ww-aRA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0uz-gk-9pQ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="328"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="328" id="NEg-yI-Yft"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WJ4-3D-dxW">
+                                <rect key="frame" x="131" y="336" width="228" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fDz-NQ-STo">
+                                <rect key="frame" x="16" y="226" width="107" height="156"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8BD-gH-M11">
+                                <rect key="frame" x="16" y="390" width="343" height="58"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="0uz-gk-9pQ" firstAttribute="leading" secondItem="0pZ-R5-WKn" secondAttribute="leading" id="Smz-7j-eCl"/>
+                            <constraint firstItem="0uz-gk-9pQ" firstAttribute="trailing" secondItem="0pZ-R5-WKn" secondAttribute="trailing" id="d3A-rR-cFv"/>
+                            <constraint firstItem="0uz-gk-9pQ" firstAttribute="top" secondItem="uhl-ww-aRA" secondAttribute="top" id="duU-MZ-WZy"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="0pZ-R5-WKn"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="7ms-hc-kaR"/>
+                    <connections>
+                        <outlet property="backdropImageView" destination="0uz-gk-9pQ" id="GqH-6q-giG"/>
+                        <outlet property="posterImageView" destination="fDz-NQ-STo" id="CYk-ZL-ifz"/>
+                        <outlet property="synopsisLabel" destination="8BD-gH-M11" id="byq-ZV-2KX"/>
+                        <outlet property="titleLabel" destination="WJ4-3D-dxW" id="fg2-px-jhQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zdk-q9-NY5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2016.8" y="138.98050974512745"/>
         </scene>
     </scenes>
 </document>
