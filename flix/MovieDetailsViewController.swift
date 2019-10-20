@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 import AlamofireImage
 
 class MovieDetailsViewController: UIViewController {
@@ -17,6 +18,7 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var synopsisLabel: UILabel!
     
     var movie: [String:Any]!
+    var trailerId: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +37,23 @@ class MovieDetailsViewController: UIViewController {
         let backdropUrl = URL(string: "https://image.tmdb.org/t/p/w780" + backdropPath)
         
         backdropImageView.af_setImage(withURL: backdropUrl!)
+        
+        Alamofire.request("https://api.themoviedb.org/3/movie/\(movie["id"]!)/videos?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed")
+            .responseJSON { response in
+                if let value = response.result.value as? [String:Any], let videos = value["results"] as? [Any] {
+                    for video in videos {
+                        if let videoInfo = video as? [String:Any] {
+                            let videoType = videoInfo["type"] as! String
+                            let videoId = videoInfo["key"] as! String
+                        
+                            if videoType == "Trailer" {
+                                self.trailerId = videoId
+                                break
+                            }
+                        }
+                    }
+                }
+            }
     }
     
 
@@ -48,4 +67,9 @@ class MovieDetailsViewController: UIViewController {
     }
     */
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let trailerViewController = segue.destination as? MovieTrailerViewController {
+            trailerViewController.trailerId = self.trailerId
+        }
+    }
 }

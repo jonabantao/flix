@@ -153,9 +153,13 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fDz-NQ-STo">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fDz-NQ-STo">
                                 <rect key="frame" x="16" y="226" width="107" height="156"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="hUL-yx-rgo" appends="YES" id="8WE-vf-8af"/>
+                                </connections>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8BD-gH-M11">
                                 <rect key="frame" x="16" y="390" width="343" height="58"/>
@@ -182,8 +186,43 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zdk-q9-NY5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="hUL-yx-rgo">
+                    <connections>
+                        <segue destination="ZVo-2d-8il" kind="presentation" id="Ye6-JF-eMQ"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3116" y="-1388"/>
+            <point key="canvasLocation" x="3385" y="-964"/>
+        </scene>
+        <!--Movie Trailer View Controller-->
+        <scene sceneID="ihr-4i-9Nh">
+            <objects>
+                <viewController id="ZVo-2d-8il" customClass="MovieTrailerViewController" customModule="flix" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Jmt-JP-SEY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="41x-r7-p29">
+                                <rect key="frame" x="16" y="135" width="343" height="343"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
+                        <viewLayoutGuide key="safeArea" id="wBh-6E-pnJ"/>
+                    </view>
+                    <connections>
+                        <outlet property="trailerWebView" destination="41x-r7-p29" id="SK8-Kf-4lk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kjy-Dq-HIH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4336.8000000000002" y="-965.6671664167917"/>
         </scene>
         <!--Superhero-->
         <scene sceneID="ERQ-AY-EWx">
@@ -224,6 +263,7 @@
                                         <size key="customSize" width="185" height="290"/>
                                         <connections>
                                             <outlet property="posterImageView" destination="Uwj-h4-kzc" id="Um1-EL-4Kr"/>
+                                            <segue destination="Yfl-Mp-Axt" kind="show" id="7Ya-yf-Pln"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -271,4 +311,7 @@
         <image name="now_playing_tabbar_item" width="21" height="21"/>
         <image name="superhero_tabbar_item" width="21" height="23"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="7Ya-yf-Pln"/>
+    </inferredMetricsTieBreakers>
 </document>
